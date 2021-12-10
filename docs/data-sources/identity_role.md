@@ -5,7 +5,6 @@ subcategory: "Identity and Access Management (IAM)"
 # g42vbcloud\_identity\_role
 
 Use this data source to get the ID of an G42VBCloud role.
-This is an alternative to `g42vbcloud_identity_role_v3`
 
 The Role in Terraform is the same as Policy on console. however,
 The policy name is the display name of Role, the Role name cannot

@@ -5,7 +5,6 @@ subcategory: "Identity and Access Management (IAM)"
 # g42vbcloud\_identity\_user
 
 Manages a User resource within G42VBCloud IAM service.
-This is an alternative to `g42vbcloud_identity_user_v3`
 
 Note: You _must_ have admin privileges in your G42VBCloud cloud to use
 this resource.

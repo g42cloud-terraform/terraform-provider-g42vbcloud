@@ -5,7 +5,6 @@ subcategory: "Identity and Access Management (IAM)"
 # g42vbcloud\_identity\_group\_membership
 
 Manages a User Group Membership resource within G42VBCloud IAM service.
-This is an alternative to `g42vbcloud_identity_group_membership_v3`
 
 Note: You _must_ have admin privileges in your G42VBCloud cloud to use
 this resource.

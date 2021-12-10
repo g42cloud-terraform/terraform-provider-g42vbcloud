@@ -19,7 +19,7 @@ Building The Provider
 Clone repository to: `$GOPATH/src/github.com/g42cloud-terraform/terraform-provider-g42vbcloud`
 
 ```sh
-$ mkdir -p $GOPATH/src/github.com/g42cloud-terraform; cd $GOPATH/src/github.com/g42vbcloud-terraform
+$ mkdir -p $GOPATH/src/github.com/g42cloud-terraform; cd $GOPATH/src/github.com/g42cloud-terraform
 $ git clone https://github.com/g42cloud-terraform/terraform-provider-g42vbcloud
 ```
 
