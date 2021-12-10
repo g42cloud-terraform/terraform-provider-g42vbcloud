@@ -4,7 +4,7 @@ subcategory: "Identity and Access Management (IAM)"
 
 # g42vbcloud\_identity\_agency
 
-Manages an agency resource within g42 cloud.
+Manages an agency resource within g42vb cloud.
 
 ## Example Usage
 

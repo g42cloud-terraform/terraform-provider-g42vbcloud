@@ -27,7 +27,7 @@ data "g42vbcloud_kms_key" "key_1" {
 * `key_alias` - (Optional, String) The alias in which to create the key. It is required when
     we create a new key. Changing this gets the new key.
 
-* `key_description` - (Optional, String) The description of the key as viewed in G42 console.
+* `key_description` - (Optional, String) The description of the key as viewed in G42VB console.
     Changing this gets a new key.
 
 * `key_id` - (Optional, String) The globally unique identifier for the key. Changing this gets the new key.

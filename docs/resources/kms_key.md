@@ -26,7 +26,7 @@ The following arguments are supported:
 * `key_alias` - (Required, String) The alias in which to create the key. It is required when
     we create a new key. Changing this updates the alias of key.
 
-* `key_description` - (Optional, String) The description of the key as viewed in G42 console.
+* `key_description` - (Optional, String) The description of the key as viewed in G42VB console.
     Changing this updates the description of key.
 
 * `pending_days` - (Optional, String) Duration in days after which the key is deleted

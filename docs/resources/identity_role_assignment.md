@@ -5,7 +5,6 @@ subcategory: "Identity and Access Management (IAM)"
 # g42vbcloud\_identity\_role\_assignment
 
 Manages a V3 Role assignment within group on G42VBCloud IAM Service.
-This is an alternative to `g42vbcloud_identity_role_assignment_v3`
 
 Note: You _must_ have admin privileges in your G42VBCloud cloud to use
 this resource. 
