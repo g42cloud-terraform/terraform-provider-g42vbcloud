@@ -4,7 +4,7 @@ subcategory: "Deprecated"
 
 # g42vbcloud_dcs_az
 
-Use this data source to get the ID of an available G42VBcloud dcs az.
+Use this data source to get the ID of an available G42VBCloud dcs az.
 
 !> **WARNING:** It has been deprecated. This data source is used for the `available_zones` of the
 `g42vbcloud_dcs_instance` resource. Now `available_zones` has been deprecated and this data source is no longer used.

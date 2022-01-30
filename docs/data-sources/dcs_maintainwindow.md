@@ -4,7 +4,7 @@ subcategory: "Distributed Cache Service (DCS)"
 
 # g42vbcloud_dcs_maintainwindow
 
-Use this data source to get the ID of an available G42VBcloud dcs maintainwindow.
+Use this data source to get the ID of an available G42VBCloud dcs maintainwindow.
 
 ## Example Usage
 

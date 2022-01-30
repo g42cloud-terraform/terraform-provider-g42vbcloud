@@ -1,53 +1,132 @@
 ---
-subcategory: "Virtual Private Cloud (VPC)"
+subcategory: "Elastic IP (EIP)"
 ---
 
-# g42vbcloud\_vpc\_peering\_connection
+# g42vbcloud_vpc_eip
 
-Provides a resource to manage a VPC Peering Connection resource.
-
--> **Note:** For cross-tenant (requester's tenant differs from the accepter's tenant) VPC Peering Connections, use the `g42vbcloud_vpc_peering_connection` resource to manage the requester's side of the connection and use the `g42vbcloud_vpc_peering_connection_accepter` resource to manage the accepter's side of the connection.
+Manages an EIP resource withinn G42VBCloud.
 
 ## Example Usage
 
- ```hcl
-resource "g42vbcloud_vpc_peering_connection" "peering" {
-  name        = var.peer_conn_name
-  vpc_id      = var.vpc_id
-  peer_vpc_id = var.accepter_vpc_id
+### EIP with Dedicated Bandwidth
+
+```hcl
+resource "g42vbcloud_vpc_eip" "eip_1" {
+  publicip {
+    type = "5_bgp"
+  }
+  bandwidth {
+    share_type  = "PER"
+    name        = "test"
+    size        = 10
+    charge_mode = "traffic"
+  }
 }
- ```
+```
+
+### EIP with Shared Bandwidth
+
+```hcl
+resource "g42vbcloud_vpc_bandwidth" "bandwidth_1" {
+  name = "bandwidth_1"
+  size = 5
+}
+
+resource "g42vbcloud_vpc_eip" "eip_1" {
+  publicip {
+    type = "5_bgp"
+  }
+  bandwidth {
+    share_type = "WHOLE"
+    id         = g42vbcloud_vpc_bandwidth.bandwidth_1.id
+  }
+}
+```
 
 ## Argument Reference
 
 The following arguments are supported:
 
-* `name` (Required, String) - Specifies the name of the VPC peering connection. The value can contain 1 to 64 characters.
+* `region` - (Optional, String, ForceNew) The region in which to create the EIP resource. If omitted, the provider-level
+  region will be used. Changing this creates a new resource.
 
-* `vpc_id` (Required, String, ForceNew) - Specifies the ID of a VPC involved in a VPC peering connection. Changing this creates a new VPC peering connection.
+* `publicip` - (Required, List) The elastic IP address object.
 
-* `peer_vpc_id` (Required, String, ForceNew) - Specifies the VPC ID of the accepter tenant. Changing this creates a new VPC peering connection.
+* `bandwidth` - (Required, List) The bandwidth object.
 
-* `peer_tenant_id` (Optional, String, ForceNew) - Specified the Tenant Id of the accepter tenant. Changing this creates a new VPC peering connection.
+* `name` - (Optional, String) Specifies the name of the elastic IP. The value can contain 1 to 64 characters,
+  including letters, digits, underscores (_), hyphens (-), and periods (.).
+
+* `tags` - (Optional, Map) Specifies the key/value pairs to associate with the elastic IP.
+
+* `enterprise_project_id` - (Optional, String, ForceNew) The enterprise project id of the elastic IP. Changing this
+  creates a new eip.
+
+* `charging_mode` - (Optional, String, ForceNew) Specifies the charging mode of the elastic IP. Valid values are
+  *prePaid* and *postPaid*, defaults to *postPaid*. Changing this creates a new eip.
+
+* `period_unit` - (Optional, String, ForceNew) Specifies the charging period unit of the elastic IP. Valid values are
+  *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new
+  eip.
+
+* `period` - (Optional, Int, ForceNew) Specifies the charging period of the elastic IP. If `period_unit` is set to
+  *month*, the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter
+  is mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
+
+* `auto_renew` - (Optional, String, ForceNew) Specifies whether auto renew is enabled. Valid values are "true" and "
+  false". Changing this creates a new resource.
+
+The `publicip` block supports:
+
+* `type` - (Optional, String, ForceNew) Specifies the EIP type. Possible values are *5_bgp* (dynamic BGP)
+  and *5_sbgp* (static BGP), the default value is *5_bgp*. Changing this creates a new resource.
+
+* `ip_address` - (Optional, String, ForceNew) Specifies the EIP to be assigned. The value must be a valid **IPv4**
+  address in the available IP address range. The system automatically assigns an EIP if you do not specify it.
+  Changing this creates a new resource.
+
+* `ip_version` - (Optional, Int) Specifies the IP version, either 4 (default) or 6.
+
+The `bandwidth` block supports:
+
+* `share_type` - (Required, String, ForceNew) Whether the bandwidth is dedicated or shared. Changing this creates a new
+  resource. Possible values are as follows:
+  + **PER**: Dedicated bandwidth
+  + **WHOLE**: Shared bandwidth
+
+* `name` - (Optional, String) The bandwidth name, which is a string of 1 to 64 characters that contain letters, digits,
+  underscores (_), and hyphens (-). This parameter is mandatory when `share_type` is set to **PER**.
+
+* `size` - (Optional, Int) The bandwidth size. The value ranges from 1 to 300 Mbit/s. This parameter is mandatory
+  when `share_type` is set to **PER**.
+
+* `id` - (Optional, String, ForceNew) The shared bandwidth id. This parameter is mandatory when
+  `share_type` is set to **WHOLE**. Changing this creates a new resource.
+
+* `charge_mode` - (Optional, String, ForceNew) Specifies whether the bandwidth is billed by traffic or by bandwidth
+  size. The value can be *traffic* or *bandwidth*. Changing this creates a new resource.
 
 ## Attributes Reference
 
 In addition to all arguments above, the following attributes are exported:
 
-* `id` - The VPC peering connection ID.
-
-* `status` - The VPC peering connection status. The value can be PENDING_ACCEPTANCE, REJECTED, EXPIRED, DELETED, or ACTIVE.
-
-## Notes
-
-If you create a VPC peering connection with another VPC of your own, the connection is created without the need for you to accept the connection.
+* `id` - The resource ID in UUID format.
+* `address` - The IPv4 address of the EIP.
+* `ipv6_address` - The IPv6 address of the EIP.
+* `private_ip` - The private IP address bound to the EIP.
+* `status` - The status of EIP.
 
 ## Timeouts
+
 This resource provides the following timeouts configuration options:
-- `create` - Default is 10 minute.
-- `delete` - Default is 10 minute.
+
+* `create` - Default is 10 minute.
+* `delete` - Default is 10 minute.
+
 ## Import
 
-VPC Peering resources can be imported using the `vpc peering id`, e.g.
+EIPs can be imported using the `id`, e.g.
 
-> $ terraform import g42vbcloud_vpc_peering_connection.test_connection 22b76469-08e3-4937-8c1d-7aad34892be1
+```
+$ terraform import g42vbcloud_vpc_eip.eip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
+```
