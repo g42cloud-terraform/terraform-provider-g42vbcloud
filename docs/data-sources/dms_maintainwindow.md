@@ -2,7 +2,7 @@
 subcategory: "Distributed Message Service (DMS)"
 ---
 
-# g42vbcloud\_dms\_maintainwindow
+# g42vbcloud_dms_maintainwindow
 
 Use this data source to get the ID of an available G42VBCloud dms maintainwindow.
 
@@ -18,7 +18,8 @@ data "g42vbcloud_dms_maintainwindow" "maintainwindow1" {
 
 ## Argument Reference
 
-* `region` - (Optional, String) The region in which to obtain the dms maintainwindows. If omitted, the provider-level region will be used.
+* `region` - (Optional, String) The region in which to obtain the dms maintainwindows. If omitted, the provider-level
+  region will be used.
 
 * `seq` - (Required, Int) Indicates the sequential number of a maintenance time window.
 
@@ -33,4 +34,3 @@ data "g42vbcloud_dms_maintainwindow" "maintainwindow1" {
 In addition to all arguments above, the following attributes are exported:
 
 * `id` - Specifies a data source ID in UUID format.
-

@@ -2,7 +2,7 @@
 subcategory: "Relational Database Service (RDS)"
 ---
 
-# g42vbcloud\_rds\_instance
+# g42vbcloud_rds_instance
 
 Manages RDS instance resource within G42VBCloud.
 
@@ -273,8 +273,9 @@ The `nodes` block contains:
 ## Timeouts
 
 This resource provides the following timeouts configuration options:
-- `create` - Default is 30 minute.
-- `update` - Default is 30 minute.
+
+* `create` - Default is 30 minute.
+* `update` - Default is 30 minute.
 
 ## Import
 

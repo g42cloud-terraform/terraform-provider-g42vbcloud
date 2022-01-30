@@ -2,7 +2,7 @@
 subcategory: "Object Storage Service (OBS)"
 ---
 
-# g42vbcloud\_obs\_bucket\_object
+# g42vbcloud_obs_bucket_object
 
 Use this data source to get info of special G42VBCloud obs object.
 

@@ -2,7 +2,7 @@
 subcategory: "Key Management Service (KMS)"
 ---
 
-# g42vbcloud\_kms\_key
+# g42vbcloud_kms_key
 
 Use this data source to get the ID of an available G42VBCloud KMS key.
 
@@ -27,7 +27,7 @@ data "g42vbcloud_kms_key" "key_1" {
 * `key_alias` - (Optional, String) The alias in which to create the key. It is required when
     we create a new key. Changing this gets the new key.
 
-* `key_description` - (Optional, String) The description of the key as viewed in G42VB console.
+* `key_description` - (Optional, String) The description of the key as viewed in G42 console.
     Changing this gets a new key.
 
 * `key_id` - (Optional, String) The globally unique identifier for the key. Changing this gets the new key.
@@ -42,7 +42,6 @@ data "g42vbcloud_kms_key" "key_1" {
 * `domain_id` - (Optional, String)  - ID of a user domain for the key. Changing this gets a new key.
 
 * `enterprise_project_id` - (Optional, String) The enterprise project id of the kms key.
-
 
 ## Attributes Reference
 

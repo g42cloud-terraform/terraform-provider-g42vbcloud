@@ -1,6 +1,6 @@
-# g42vbcloud\_availability\_zones
+# g42vbcloud_availability_zones
 
-Use this data source to get a list of availability zones from G42VBloud
+Use this data source to get a list of availability zones from G42VBCloud
 
 ## Example Usage
 
@@ -10,10 +10,10 @@ data "g42vbcloud_availability_zones" "zones" {}
 
 ## Argument Reference
 
-* `region` - (Optional, String) The region in which to obtain the available zones. If omitted, the provider-level region will be used.
+* `region` - (Optional, String) The region in which to obtain the available zones. If omitted, the provider-level region
+  will be used.
 
 * `state` - (Optional, String) The `state` of the availability zones to match, default ("available").
-
 
 ## Attributes Reference
 

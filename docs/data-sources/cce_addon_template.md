@@ -2,7 +2,7 @@
 subcategory: "Cloud Container Engine (CCE)"
 ---
 
-# g42vbcloud\_cce\_addon\_template
+# g42vbcloud_cce_addon_template
 
 Use this data source to get available G42VBloud CCE add-on template.
 
