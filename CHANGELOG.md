@@ -1,3 +1,9 @@
+## 0.2.0 (January 30, 2022)
+
+ENHANCEMENTS:
+
+* Update the docs and reference ([#2](https://github.com/g42cloud-terraform/terraform-provider-g42vbcloud/pull/2))
+
 ## 0.1.0 (December 9, 2021)
 
 FEATURES:
